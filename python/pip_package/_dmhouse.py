@@ -94,7 +94,7 @@ def generate_images(seed, poses, screen_size=(84, 84), renderer='hardware'):
     i = 0
     for _ in poses:
         lab.step(_action(0, 0, 0, 1, 0, 0, 0), num_steps=1)
-        lab.step(_action(0, 0, 0, 0, 0, 0, 0), num_steps=3)
+        lab.step(_action(0, 0, 0, 0, 0, 0, 0), num_steps=7)
         obs = lab.observations()
         i += 1
         yield (obs['RGBD_INTERLEAVED'][:, :, :3], obs['RGBD_INTERLEAVED'][:, :, 3:4])

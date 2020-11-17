@@ -84,7 +84,7 @@ $ ./bazel-bin/python/pip_package/build_pip_package /tmp/dmlab_pkg
 
 The package can be installed using the following command:
 ``` 
-$ pip install /tmp/dmlab_pkg/DMHouse-*-py3-none-any.whl
+$ pip install /tmp/dmlab_pkg/dmhouse-*-py3-none-any.whl
 ```
 
 

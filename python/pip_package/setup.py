@@ -15,7 +15,7 @@ LICENSE = open(os.path.join(HERE, "LICENSE"), 'r').read()
 
 setuptools.setup(
     name='dmhouse',
-    version='1.0.0',
+    version='1.0.1',
     long_description=README,
     long_description_content_type="text/markdown",
     description='DMHouse 3D environment simulator',
