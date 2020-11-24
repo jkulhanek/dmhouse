@@ -320,6 +320,10 @@ function factory.createLevelApi(kwargs)
     self:_generateMap()
   end
 
+  function api:hasEpisodeFinished(timeSeconds)
+    return false
+  end
+
   function api:calculateBonus(goalId)
     if self._currentEntities[goalId].isCollected then
       return 0.0
