@@ -23,7 +23,7 @@ jobs:
     - name: Install dependencies
       run: |
         sudo apt-get -y update && DEBIAN_FRONTEND="noninteractive" sudo apt-get -y install tzdata && \
-        sudo apt-get -y install python3.8-dev g++ unzip zip curl gnupg python3.8-numpy libsdl2-dev libosmesa6-dev gettext && \
+        sudo apt-get -y install python3.8-dev g++ unzip zip curl gnupg python3-numpy libsdl2-dev libosmesa6-dev gettext && \
         curl -fsSL https://bazel.build/bazel-release.pub.gpg | gpg --dearmor > /tmp/bazel.gpg && \
         sudo mv /tmp/bazel.gpg /etc/apt/trusted.gpg.d/ && \
         echo "deb [arch=amd64] https://storage.googleapis.com/bazel-apt stable jdk1.8" | sudo tee /etc/apt/sources.list.d/bazel.list && \
