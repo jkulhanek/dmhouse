@@ -33,6 +33,7 @@ jobs:
         python3.8 -m pip install setuptools
         python -m pip install --upgrade pip
         python -m pip install setuptools wheel twine
+        echo "$(whereis python3.8)"
         bazel build -c opt --define graphics=osmesa_or_egl //python/pip_package:build_pip_package
         ./bazel-bin/python/pip_package/build_pip_package /tmp/dmlab_pkg
     - name: Build and publish
