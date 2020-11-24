@@ -22,17 +22,17 @@ jobs:
         python-version: '3.x'
     - name: Install dependencies
       run: |
-        apt-get -y update && DEBIAN_FRONTEND="noninteractive" apt-get -y install tzdata && \
-        apt-get -y install python3.8-dev g++ unzip zip curl gnupg python3.8-numpy libsdl2-dev libosmesa6-dev gettext && \
+        sudo apt-get -y update && DEBIAN_FRONTEND="noninteractive" sudo apt-get -y install tzdata && \
+        sudo apt-get -y install python3.8-dev g++ unzip zip curl gnupg python3.8-numpy libsdl2-dev libosmesa6-dev gettext && \
         curl -fsSL https://bazel.build/bazel-release.pub.gpg | gpg --dearmor > /tmp/bazel.gpg && \
-        mv /tmp/bazel.gpg /etc/apt/trusted.gpg.d/ && \
-        echo "deb [arch=amd64] https://storage.googleapis.com/bazel-apt stable jdk1.8" | tee /etc/apt/sources.list.d/bazel.list && \
-        apt -y update && apt -y install bazel && \
+        sudo mv /tmp/bazel.gpg /etc/apt/trusted.gpg.d/ && \
+        echo "deb [arch=amd64] https://storage.googleapis.com/bazel-apt stable jdk1.8" | sudo tee /etc/apt/sources.list.d/bazel.list && \
+        sudo apt -y update && apt -y install bazel && \
         curl https://bootstrap.pypa.io/get-pip.py -o /tmp/get-pip.py && \
-        python3.8 /tmp/get-pip.py && \
-        python3.8 -m pip install setuptools
-        python -m pip install --upgrade pip
-        python -m pip install setuptools wheel twine
+        sudo python3.8 /tmp/get-pip.py && \
+        sudo python3.8 -m pip install setuptools
+        sudo python -m pip install --upgrade pip
+        sudo python -m pip install setuptools wheel twine
         echo "$(whereis python3.8)"
         bazel build -c opt --define graphics=osmesa_or_egl //python/pip_package:build_pip_package
         ./bazel-bin/python/pip_package/build_pip_package /tmp/dmlab_pkg
