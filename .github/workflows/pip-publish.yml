@@ -16,11 +16,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v2
-    - name: Set up Python
-      uses: actions/setup-python@v2
-      with:
-        python-version: '3.8'
-    - name: Install dependencies
+    - name: Install dependencies and build
       run: |
         sudo apt-get -y update && DEBIAN_FRONTEND="noninteractive" sudo apt-get -y install tzdata && \
         sudo apt-get -y install python3.8-dev g++ unzip zip curl gnupg python3-numpy libsdl2-dev libosmesa6-dev gettext && \
@@ -37,7 +33,7 @@ jobs:
         echo "$(python3.8 -c 'import numpy as np; print(np.get_include())')"
         bazel build -c opt --define graphics=osmesa_or_egl //python/pip_package:build_pip_package
         ./bazel-bin/python/pip_package/build_pip_package /tmp/dmlab_pkg
-    - name: Build and publish
+    - name: Publish
       env:
         TWINE_USERNAME: ${{ secrets.PYPI_USERNAME }}
         TWINE_PASSWORD: ${{ secrets.PYPI_PASSWORD }}
