@@ -72,13 +72,19 @@ class DMHouseGoalEnv(gym.Env):
         self._lab.reset(seed=seed)
 
     def close(self):
-        self._lab.close()
+        lab = self._lab
+        if lab is not None:
+            self._lab = None
+            self._lab.close()
 
     def render(self, mode='rgb_array', close=False):
         if mode == 'rgb_array':
             return self._lab.observations()['RGBD_INTERLEAVED'][:, :, :3]
         else:
             super().render(mode=mode)  # just raise an exception
+
+    def __del__(self):
+        self.close()
 
 
 def generate_images(seed, poses, screen_size=(84, 84), renderer='hardware'):

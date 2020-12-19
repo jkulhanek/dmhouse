@@ -253,7 +253,7 @@ function factory.createLevelApi(kwargs)
 
   function api:init(settings)
     if settings['same_map_episodes'] ~= nil then
-        print('setting iterationsWithSameMap to ' .. settings['same_map_episodes'])
+        -- print('setting iterationsWithSameMap to ' .. settings['same_map_episodes'])
         kwargs['iterationsWithSameMap'] = tonumber(settings['same_map_episodes']) 
         io.flush()
     end
