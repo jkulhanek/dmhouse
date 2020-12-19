@@ -33,7 +33,7 @@ class DMHouseGoalEnv(gym.Env):
 
         self.action_space = gym.spaces.Box(low=-np.inf, high=np.inf, shape=(7,), dtype=np.intc)
         self.observation_space = gym.spaces.Tuple((
-            gym.spaces.Box(0, 255, (height, width, 4), dtype=np.uint8),
+            gym.spaces.Box(0, 255, (height, width, 3), dtype=np.uint8),
             gym.spaces.Box(0, 225, (height, width, 3), dtype=np.uint8),
             gym.spaces.Box(0, 225, (height, width, 1), dtype=np.uint8)))
 
