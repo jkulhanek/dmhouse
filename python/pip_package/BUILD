@@ -10,6 +10,7 @@ sh_binary(
         "README.md",
         "__init__.py",
         "setup.py",
+        "_version.py",
         "//:deepmind_lab.so",
     ],
 )

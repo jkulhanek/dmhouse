@@ -12,10 +12,11 @@ REQUIRED_PACKAGES = [
 HERE = os.path.dirname(os.path.abspath(__file__))
 README = open(os.path.join(HERE, "README.md"), 'r').read() + '\n'
 LICENSE = open(os.path.join(HERE, "LICENSE"), 'r').read()
+from _version import __version__
 
 setuptools.setup(
     name='dmhouse',
-    version='1.0.1',
+    version=__version__,
     long_description=README,
     long_description_content_type="text/markdown",
     description='DMHouse 3D environment simulator',

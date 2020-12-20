@@ -41,6 +41,7 @@ function main() {
   cp -- python/pip_package/setup.py "${TMPDIR}"
   cp -- python/pip_package/__init__.py "${TMPDIR}/dmhouse/__init__.py"
   cp -- python/pip_package/_dmhouse.py "${TMPDIR}/dmhouse/_dmhouse.py"
+  cp -- python/pip_package/_version.py "${TMPDIR}/dmhouse/_version.py"
 
   MANIFEST_IN="${TMPDIR}/MANIFEST.in"
   echo "include README.md" >> "${MANIFEST_IN}"
