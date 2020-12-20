@@ -3,7 +3,7 @@
 import imp
 import pkg_resources
 from dmhouse._dmhouse import DMHouseGoalEnv, DMHouseGoalNaturalEnv, generate_images  # noqa: F401
-from _version import __version__
+from dmhouse._version import __version__
 
 imp.load_dynamic(__name__, pkg_resources.resource_filename(
     __name__, 'deepmind_lab.so'))
