@@ -73,9 +73,9 @@ class DMHouseGoalEnv(gym.Env):
 
     def close(self):
         lab = self._lab
+        self._lab = None
         if lab is not None:
-            self._lab = None
-            self._lab.close()
+            lab.close()
 
     def render(self, mode='rgb_array', close=False):
         if mode == 'rgb_array':
