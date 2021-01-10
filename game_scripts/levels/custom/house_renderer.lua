@@ -31,7 +31,7 @@ local modifyControl = api.modifyControl
 function api:modifyControl(actions)
   if actions.moveBackForward > 0 then
     pose_index = pose_index + 1
-    print('rendering view '..pose_index)
+    --print('rendering view '..pose_index)
     pose = split(poses[pose_index], '%s')
     game:console('setviewpos '..pose[1] .. ' ' .. pose[2] .. ' 30 '.. pose[3])
   end

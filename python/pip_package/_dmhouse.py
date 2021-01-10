@@ -105,6 +105,8 @@ def generate_images(seed, poses, screen_size=(84, 84), renderer='hardware'):
         i += 1
         yield (obs['RGBD_INTERLEAVED'][:, :, :3], obs['RGBD_INTERLEAVED'][:, :, 3:4])
     lab.close()
+    if i < len(poses):
+        raise RuntimeError(f'There was an error when generating images, the number of generated images ({i}) is not equal to the number of requested images ({len(poses)})')
 
 
 class NaturalActionWrapper(gym.ActionWrapper):
