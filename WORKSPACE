@@ -103,7 +103,7 @@ http_archive(
 
 http_archive(
     name = "rules_cc",
-    strip_prefix = "rules_cc-master",
+    strip_prefix = "rules_cc-main",
     urls = ["https://github.com/bazelbuild/rules_cc/archive/master.zip"],
 )
 

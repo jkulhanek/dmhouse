@@ -20,14 +20,18 @@ ACTION_LIST = [
 class DMHouseGoalEnv(gym.Env):
     metadata = {'render.modes': ['rgb_array']}
 
-    def __init__(self, screen_size=(84, 84), renderer="hardware", same_map_episodes=50, steps_repeat=1, **kwargs):
+    def __init__(self, screen_size=(84, 84), renderer="hardware", same_map_episodes=50, steps_repeat=1, level=None, distance_scale=1, **kwargs):
         import dmhouse
+
+        if level is None:
+            level = 'custom/dmhouse'
 
         super().__init__(**kwargs)
         height, width = screen_size
 
+        self._distance_scale = distance_scale
         self._colors = ['RGBD_INTERLEAVED', 'GOAL_RGB_INTERLEAVED', 'DISTANCE', 'SHORTEST_DISTANCE']
-        self._lab = dmhouse.Lab('custom/house', self._colors,
+        self._lab = dmhouse.Lab(level, self._colors,
                                 dict(fps=str(60), width=str(width), height=str(height), same_map_episodes=str(same_map_episodes)),
                                 renderer=renderer)
 
@@ -53,8 +57,8 @@ class DMHouseGoalEnv(gym.Env):
         return (self._distance, self._shortestDistance)
 
     def observe(self, obs):
-        self._distance = obs['DISTANCE']
-        self._shortestDistance = obs['SHORTEST_DISTANCE']
+        self._distance = obs['DISTANCE'] * self._distance_scale
+        self._shortestDistance = obs['SHORTEST_DISTANCE'] * self._distance_scale
         return (
             obs[self._colors[0]][:, :, :3],
             obs[self._colors[1]],
