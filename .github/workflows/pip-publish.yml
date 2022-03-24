@@ -38,7 +38,7 @@ jobs:
         sudo apt -y update && sudo apt -y install bazel && \
         curl https://bootstrap.pypa.io/get-pip.py -o /tmp/get-pip.py && \
         sudo python3.8 /tmp/get-pip.py && \
-        sudo python3.8 -m pip install setuptools numpy
+        sudo python3.8 -m pip install setuptools numpy==1.19.5
         sudo python3.8 -m pip install --upgrade pip
         sudo python3.8 -m pip install setuptools wheel twine
         sudo ln -s /usr/local/lib/python3.8/dist-packages/numpy/core/include/numpy /usr/include/python3.8
