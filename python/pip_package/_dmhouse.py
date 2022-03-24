@@ -24,7 +24,7 @@ class DMHouseGoalEnv(gym.Env):
         import dmhouse
 
         if level is None:
-            level = 'custom/dmhouse'
+            level = 'custom/house'
 
         super().__init__(**kwargs)
         height, width = screen_size
